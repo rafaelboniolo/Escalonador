@@ -5,6 +5,8 @@
  */
 package escalonador;
 
+import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 /**
@@ -16,12 +18,18 @@ public class Processo {
     private int tempo;
     private int cont;
     private JProgressBar bar;
+    private List<List<JLabel>> labels;
 
-    public Processo(String nome, int tempo, int cont, JProgressBar bar) {
+    public Processo(String nome, int tempo, int cont, JProgressBar bar, List<List<JLabel>> labels) {
         this.nome = nome;
         this.tempo = tempo;
         this.cont = cont;
         this.bar = bar;
+        this.labels = labels;
+    }
+
+    public List<List<JLabel>> getLabels() {
+        return labels;
     }
 
     public String getNome() {

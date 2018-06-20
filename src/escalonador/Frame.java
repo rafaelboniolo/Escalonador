@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 /**
@@ -32,13 +33,16 @@ public class Frame extends javax.swing.JFrame {
     private Processo p3;
     private Processo p4;
     private List<JProgressBar> barras = new ArrayList<JProgressBar>();
+    private List<List<JLabel>> labels = new ArrayList();
     
     public Frame() {
         initComponents();
+        this.setStatusInit();
         preencherCampos();
-        criarProcessos();
+        
         this.setLocationRelativeTo(null);
         this.setTitle("Trabalho S.O");
+        
         
     }
 
@@ -59,10 +63,26 @@ public class Frame extends javax.swing.JFrame {
                         ("Programa "+(char)i),
                         (new Random().nextInt(99) + 1),
                         0,
-                        this.barras.get(i-65))
+                        this.barras.get(i-65),
+                        this.labels
+                )
             );
-       
+            // add lista de criados
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {}
+            
+            this.labels.get(0).get(i-65).setText("Processo "+(char)i);
+            
+            // add lista de prontos
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {}
+            
+            this.labels.get(1).get(i-65).setText("Processo "+(char)i);
+            
         }
+        
         
         
         this.est.bufferProntos = this.est.bufferCriados;
@@ -98,8 +118,38 @@ public class Frame extends javax.swing.JFrame {
         barrinhaB = new javax.swing.JProgressBar();
         barrinhaC = new javax.swing.JProgressBar();
         test = new javax.swing.JProgressBar();
-        barrinhaA1 = new javax.swing.JLabel();
         barrinhaD1 = new javax.swing.JProgressBar();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        c1 = new javax.swing.JLabel();
+        c2 = new javax.swing.JLabel();
+        c3 = new javax.swing.JLabel();
+        c4 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        pr1 = new javax.swing.JLabel();
+        pr2 = new javax.swing.JLabel();
+        pr3 = new javax.swing.JLabel();
+        pr4 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        b1 = new javax.swing.JLabel();
+        b2 = new javax.swing.JLabel();
+        b3 = new javax.swing.JLabel();
+        b4 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        e1 = new javax.swing.JLabel();
+        e2 = new javax.swing.JLabel();
+        e3 = new javax.swing.JLabel();
+        e4 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        f1 = new javax.swing.JLabel();
+        f2 = new javax.swing.JLabel();
+        f3 = new javax.swing.JLabel();
+        f4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,58 +161,329 @@ public class Frame extends javax.swing.JFrame {
                 btEscalonarActionPerformed(evt);
             }
         });
-        jPanel1.add(btEscalonar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, 40));
+        jPanel1.add(btEscalonar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, 40));
 
         labelA.setText("a");
         jPanel1.add(labelA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 20));
 
         labelB.setText("a");
-        jPanel1.add(labelB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 80, 20));
+        jPanel1.add(labelB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 20));
 
         labelC.setText("a");
-        jPanel1.add(labelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 80, 20));
+        jPanel1.add(labelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, 20));
 
         labelD.setText("a");
-        jPanel1.add(labelD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 80, 20));
+        jPanel1.add(labelD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 80, 20));
 
         barrinhaA.setStringPainted(true);
         jPanel1.add(barrinhaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 300, 20));
 
         barrinhaB.setStringPainted(true);
-        jPanel1.add(barrinhaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 300, 20));
+        jPanel1.add(barrinhaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 300, 20));
 
         barrinhaC.setStringPainted(true);
-        jPanel1.add(barrinhaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 300, 20));
+        jPanel1.add(barrinhaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 300, 20));
 
         test.setStringPainted(true);
-        jPanel1.add(test, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 300, 20));
-
-        barrinhaA1.setText("|");
-        jPanel1.add(barrinhaA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 300, 20));
+        jPanel1.add(test, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 300, 20));
 
         barrinhaD1.setStringPainted(true);
-        jPanel1.add(barrinhaD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 300, 20));
+        jPanel1.add(barrinhaD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 300, 20));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel4.setText("Criados");
+
+        c1.setText("Processo A");
+
+        c2.setText("Processo B");
+
+        c3.setText("Processo C");
+
+        c4.setText("Processo D");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(c1))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(c2))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(c3))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(c4)))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(c1)
+                .addGap(18, 18, 18)
+                .addComponent(c2)
+                .addGap(18, 18, 18)
+                .addComponent(c3)
+                .addGap(18, 18, 18)
+                .addComponent(c4)
+                .addGap(31, 31, 31))
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel5.setText("Prontos");
+
+        pr1.setText("Processo A");
+
+        pr2.setText("Processo B");
+
+        pr3.setText("Processo C");
+
+        pr4.setText("Processo D");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pr1)
+                            .addComponent(pr2)
+                            .addComponent(pr3)
+                            .addComponent(pr4))))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pr1)
+                .addGap(18, 18, 18)
+                .addComponent(pr2)
+                .addGap(18, 18, 18)
+                .addComponent(pr3)
+                .addGap(18, 18, 18)
+                .addComponent(pr4)
+                .addGap(32, 32, 32))
+        );
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel7.setText("Bloqueados");
+
+        b1.setText("Processo A");
+
+        b2.setText("Processo B");
+
+        b3.setText("Processo C");
+
+        b4.setText("Processo D");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(b1)
+                            .addComponent(b2)
+                            .addComponent(b3)
+                            .addComponent(b4))))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(b1)
+                .addGap(18, 18, 18)
+                .addComponent(b2)
+                .addGap(18, 18, 18)
+                .addComponent(b3)
+                .addGap(18, 18, 18)
+                .addComponent(b4)
+                .addGap(33, 33, 33))
+        );
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel6.setText("Em Exec");
+
+        e1.setText("Processo A");
+
+        e2.setText("Processo B");
+
+        e3.setText("Processo C");
+
+        e4.setText("Processo D");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(e1)
+                            .addComponent(e2)
+                            .addComponent(e3)
+                            .addComponent(e4))))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(e1)
+                .addGap(18, 18, 18)
+                .addComponent(e2)
+                .addGap(18, 18, 18)
+                .addComponent(e3)
+                .addGap(18, 18, 18)
+                .addComponent(e4)
+                .addGap(31, 31, 31))
+        );
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel8.setText("Finalizados");
+
+        f1.setText("Processo A");
+
+        f2.setText("Processo B");
+
+        f3.setText("Processo C");
+
+        f4.setText("Processo D");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(f1)
+                            .addComponent(f2)
+                            .addComponent(f3)
+                            .addComponent(f4))))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(f1)
+                .addGap(18, 18, 18)
+                .addComponent(f2)
+                .addGap(18, 18, 18)
+                .addComponent(f3)
+                .addGap(18, 18, 18)
+                .addComponent(f4)
+                .addGap(31, 31, 31))
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 790, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEscalonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEscalonarActionPerformed
+        
+        
         new Thread(()->{
+            
+            criarProcessos();
             
             System.out.println("Quantum: " + quantum);
         while(this.N != 0){
             this.bufferExecutando = this.est.bufferProntos.get(this.inicio);
+            this.bufferExecutando.getLabels().get(2).get(N-1).setText("OK"); // CORRIGIR ESTA MERDA
             
             System.out.println("Processo: "+this.bufferExecutando.getNome()+"\tTempo: "+this.bufferExecutando.getTempo());
             
@@ -205,6 +526,52 @@ public class Frame extends javax.swing.JFrame {
         
     }
     
+    public void setStatusInit(){
+        this.labels.add(new ArrayList());
+        this.labels.get(0).add(this.c1);
+        this.labels.get(0).add(this.c2);
+        this.labels.get(0).add(this.c3);
+        this.labels.get(0).add(this.c4);
+        
+        
+        this.labels.add(new ArrayList());
+        this.labels.get(1).add(this.pr1);
+        this.labels.get(1).add(this.pr2);
+        this.labels.get(1).add(this.pr3);
+        this.labels.get(1).add(this.pr4);
+        
+        
+        this.labels.add(new ArrayList());
+        this.labels.get(2).add(this.e1);
+        this.labels.get(2).add(this.e2);
+        this.labels.get(2).add(this.e3);
+        this.labels.get(2).add(this.e4);
+        
+        this.labels.add(new ArrayList());
+        this.labels.get(3).add(this.b1);
+        this.labels.get(3).add(this.b2);
+        this.labels.get(3).add(this.b3);
+        this.labels.get(3).add(this.b4);
+        
+        this.labels.add(new ArrayList());
+        this.labels.get(4).add(this.f1);
+        this.labels.get(4).add(this.f2);
+        this.labels.get(4).add(this.f3);
+        this.labels.get(4).add(this.f4);
+        
+        
+        this.labels.forEach((x)->{
+            x.forEach((y)->{
+                y.setText("---");                        
+            });
+        });
+        
+    }
+    
+    public void prontos(){
+        
+    }
+    
     public int circular(int inicio){
         if(inicio > this.N-1){
             return 0;
@@ -213,15 +580,9 @@ public class Frame extends javax.swing.JFrame {
         }
     }
     
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -238,9 +599,7 @@ public class Frame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame().setVisible(true);
@@ -249,17 +608,57 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel b1;
+    private javax.swing.JLabel b2;
+    private javax.swing.JLabel b3;
+    private javax.swing.JLabel b4;
     private javax.swing.JProgressBar barrinhaA;
-    private javax.swing.JLabel barrinhaA1;
     private javax.swing.JProgressBar barrinhaB;
     private javax.swing.JProgressBar barrinhaC;
     private javax.swing.JProgressBar barrinhaD1;
     private javax.swing.JButton btEscalonar;
+    private javax.swing.JLabel c1;
+    private javax.swing.JLabel c2;
+    private javax.swing.JLabel c3;
+    private javax.swing.JLabel c4;
+    private javax.swing.JLabel e1;
+    private javax.swing.JLabel e2;
+    private javax.swing.JLabel e3;
+    private javax.swing.JLabel e4;
+    private javax.swing.JLabel f1;
+    private javax.swing.JLabel f2;
+    private javax.swing.JLabel f3;
+    private javax.swing.JLabel f4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel labelA;
     private javax.swing.JLabel labelB;
     private javax.swing.JLabel labelC;
     private javax.swing.JLabel labelD;
+    private javax.swing.JLabel pr1;
+    private javax.swing.JLabel pr2;
+    private javax.swing.JLabel pr3;
+    private javax.swing.JLabel pr4;
     private javax.swing.JProgressBar test;
     // End of variables declaration//GEN-END:variables
 }
