@@ -26,6 +26,8 @@ public class Processo {
         this.cont = cont;
         this.bar = bar;
         this.labels = labels;
+        
+        this.bar.setMaximum(tempo);
     }
 
     public List<List<JLabel>> getLabels() {

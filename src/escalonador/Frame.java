@@ -34,6 +34,8 @@ public class Frame extends javax.swing.JFrame {
     private Processo p4;
     private List<JProgressBar> barras = new ArrayList<JProgressBar>();
     private List<List<JLabel>> labels = new ArrayList();
+    private int barraTotal = 0;
+    
     
     public Frame() {
         initComponents();
@@ -81,6 +83,7 @@ public class Frame extends javax.swing.JFrame {
             
             this.labels.get(1).get(i-65).setText("Processo "+(char)i);
             
+            
         }
         
         
@@ -89,6 +92,8 @@ public class Frame extends javax.swing.JFrame {
         
         this.quantum = new Random().nextInt(10) + 10;
         this.inicio = 0;
+        
+        
     }
     
     private void preencherCampos(){
@@ -117,7 +122,6 @@ public class Frame extends javax.swing.JFrame {
         barrinhaA = new javax.swing.JProgressBar();
         barrinhaB = new javax.swing.JProgressBar();
         barrinhaC = new javax.swing.JProgressBar();
-        test = new javax.swing.JProgressBar();
         barrinhaD1 = new javax.swing.JProgressBar();
         jPanel7 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -153,42 +157,28 @@ public class Frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btEscalonar.setText("Precione");
         btEscalonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEscalonarActionPerformed(evt);
             }
         });
-        jPanel1.add(btEscalonar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, 40));
 
         labelA.setText("a");
-        jPanel1.add(labelA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 20));
 
         labelB.setText("a");
-        jPanel1.add(labelB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 20));
 
         labelC.setText("a");
-        jPanel1.add(labelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, 20));
 
         labelD.setText("a");
-        jPanel1.add(labelD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 80, 20));
 
         barrinhaA.setStringPainted(true);
-        jPanel1.add(barrinhaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 300, 20));
 
         barrinhaB.setStringPainted(true);
-        jPanel1.add(barrinhaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 300, 20));
 
         barrinhaC.setStringPainted(true);
-        jPanel1.add(barrinhaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 300, 20));
-
-        test.setStringPainted(true);
-        jPanel1.add(test, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 300, 20));
 
         barrinhaD1.setStringPainted(true);
-        jPanel1.add(barrinhaD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 300, 20));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -457,70 +447,202 @@ public class Frame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 790, 240));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(barrinhaA, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(barrinhaB, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(barrinhaC, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(labelD, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(barrinhaD1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190)
+                .addComponent(btEscalonar))
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelA, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barrinhaA, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barrinhaB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barrinhaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btEscalonar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelD, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(barrinhaD1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(59, 59, 59)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEscalonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEscalonarActionPerformed
-        
-        
-        new Thread(()->{
+
+        new Thread(() -> {
+            //this.est.bufferProntos.forEach((x)->{
+             //   this.barraTotal += x.getTempo();
+           // });
             
             criarProcessos();
             
+            
             System.out.println("Quantum: " + quantum);
-        while(this.N != 0){
-            this.bufferExecutando = this.est.bufferProntos.get(this.inicio);
-            this.bufferExecutando.getLabels().get(2).get(N-1).setText("OK"); // CORRIGIR ESTA MERDA
+
             
-            System.out.println("Processo: "+this.bufferExecutando.getNome()+"\tTempo: "+this.bufferExecutando.getTempo());
             
-            this.bufferExecutando.setTempo(this.bufferExecutando.getTempo() - this.quantum);
+
             
-            barraDeProgresso(this.bufferExecutando, this.bufferExecutando.getCont() + quantum);
-            
-            if(this.bufferExecutando.getTempo() <= 0){
-                est.bufferProntos.remove(this.bufferExecutando);
-                est.bufferFinalizados.add(this.bufferExecutando);
-                inicio--;
-                N--;
+            while (this.N != 0) {
+                this.bufferExecutando = this.est.bufferProntos.get(this.inicio);
+                
+
+                System.out.println("Processo: " + this.bufferExecutando.getNome() + "\tTempo: " + this.bufferExecutando.getTempo());
+
+                this.bufferExecutando.setTempo(this.bufferExecutando.getTempo() - this.quantum);
+
+                
+                System.out.println(this.bufferExecutando.getNome());
+                
+                
+                
+                if(this.bufferExecutando.getNome().equals("Programa A")){
+                    this.labels.get(1).get(0).setText("---");
+                    this.labels.get(2).get(0).setText("Processo A");
+                } 
+                    
+                if(this.bufferExecutando.getNome().equals("Programa B")) {
+                    this.labels.get(1).get(1).setText("---");
+                    this.labels.get(2).get(1).setText("Processo B");
+                }
+                
+                if(this.bufferExecutando.getNome().equals("Programa C")){ 
+                    this.labels.get(1).get(2).setText("---");
+                    this.labels.get(2).get(2).setText("Processo C");
+                }
+                
+                if(this.bufferExecutando.getNome().equals("Programa D")) {
+                    this.labels.get(1).get(3).setText("---");
+                    this.labels.get(2).get(3).setText("Processo D");
+                }
+                
+                
+                barraDeProgresso(this.bufferExecutando, this.bufferExecutando.getCont() + quantum);
+                
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(this.bufferExecutando.getNome().equals("Programa A")){
+                    this.labels.get(3).get(0).setText("Processo A");
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    this.labels.get(3).get(0).setText("---");
+                }
+                
+                 
+                
+                
+                
+                
+                if (this.bufferExecutando.getTempo() <= 0) {
+                    est.bufferProntos.remove(this.bufferExecutando);
+                    est.bufferFinalizados.add(this.bufferExecutando);
+
+                    
+                    if(this.bufferExecutando.getNome().equals("Programa A")){ 
+                        this.labels.get(4).get(0).setText("Processo A");
+                        this.labels.get(1).get(0).setText("---");
+                    }
+                    
+                    if(this.bufferExecutando.getNome().equals("Programa B")){ 
+                        this.labels.get(4).get(1).setText("Processo B");
+                        this.labels.get(1).get(1).setText("---");
+                    }
+                    
+                    if(this.bufferExecutando.getNome().equals("Programa C")){
+                        this.labels.get(4).get(2).setText("Processo C");
+                        this.labels.get(1).get(2).setText("---");
+                    }
+                    
+                    if(this.bufferExecutando.getNome().equals("Programa D")){ 
+                        this.labels.get(4).get(3).setText("Processo D");
+                        this.labels.get(1).get(3).setText("---");
+                    }
+
+                    System.out.println(this.bufferExecutando.getNome());
+                    
+                    inicio--;
+                    N--;
+                }
+
+                this.inicio++;
+                this.inicio = circular(this.inicio);
+                
+                if (this.inicio == 0) {
+                    System.out.println("");
+                }
             }
-            
-            this.inicio++;
-            this.inicio = circular(this.inicio);
-            if(this.inicio == 0){
-                System.out.println("");
-            }
-        }
         }).start();
-        
-        
+
+
     }//GEN-LAST:event_btEscalonarActionPerformed
 
     public void barraDeProgresso(Processo p, int timer){
       
-        while(p.getCont() != timer && p.getCont() != p.getTempo()){
-
-        p.getBar().setValue(p.getCont());
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(p.getCont());
-        p.setCont(p.getCont()+1);
+        while(p.getCont() <= timer && p.getCont() != p.getTempo()){
+            p.getBar().setValue(p.getCont());
+            
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            System.out.println(p.getCont());
+            p.setCont(p.getCont()+1);
     }
 
         
@@ -581,31 +703,6 @@ public class Frame extends javax.swing.JFrame {
     }
     
     
-    public static void main(String args[]) {
-        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Frame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel b1;
@@ -629,28 +726,18 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel f2;
     private javax.swing.JLabel f3;
     private javax.swing.JLabel f4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel labelA;
     private javax.swing.JLabel labelB;
     private javax.swing.JLabel labelC;
@@ -659,6 +746,5 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel pr2;
     private javax.swing.JLabel pr3;
     private javax.swing.JLabel pr4;
-    private javax.swing.JProgressBar test;
     // End of variables declaration//GEN-END:variables
 }
