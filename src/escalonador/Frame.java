@@ -34,7 +34,7 @@ public class Frame extends javax.swing.JFrame {
     private Processo p4;
     private List<JProgressBar> barras = new ArrayList<JProgressBar>();
     private List<List<JLabel>> labels = new ArrayList();
-    private int barraTotal = 0;
+    
     
     
     public Frame() {
@@ -50,7 +50,7 @@ public class Frame extends javax.swing.JFrame {
 
     private void criarProcessos(){
         this.est = new Estados();
-        
+        List<JLabel> label = new ArrayList<>();
         this.barras.add(this.barrinhaA);
         this.barras.add(this.barrinhaB);
         this.barras.add(this.barrinhaC);
@@ -59,16 +59,27 @@ public class Frame extends javax.swing.JFrame {
         
       
         // contador nessa faixa para atribuição de char //PROGRAMA A////PROGRAMA B////PROGRAMA C////PROGRAMA D//
+        
+        
+        
+        
         for(int i = 65; i < 69; i++){
+            
+                label = new ArrayList<>();
+                for(int j = 0 ; j < 5; j++){
+                    label.add(this.labels.get(j).get(i-65));
+                }
+            
             this.est.bufferCriados.add(
                 new Processo(
                         ("Programa "+(char)i),
                         (new Random().nextInt(99) + 1),
                         0,
                         this.barras.get(i-65),
-                        this.labels
+                        label
                 )
             );
+            
             // add lista de criados
             try {
                 Thread.sleep(1000);
@@ -525,64 +536,31 @@ public class Frame extends javax.swing.JFrame {
             criarProcessos();
             
             
-            System.out.println("Quantum: " + quantum);
-
             
-            
-
+               
             
             while (this.N != 0) {
-                this.bufferExecutando = this.est.bufferProntos.get(this.inicio);
                 
-
-                System.out.println("Processo: " + this.bufferExecutando.getNome() + "\tTempo: " + this.bufferExecutando.getTempo());
-
+                this.est.bufferProntos.get(this.inicio).getLabels().get(1).setText("---");
+                
+                this.bufferExecutando = this.est.bufferProntos.get(this.inicio);
+                this.bufferExecutando.getLabels().get(2).setText(this.bufferExecutando.getNome());
                 this.bufferExecutando.setTempo(this.bufferExecutando.getTempo() - this.quantum);
 
-                
-                System.out.println(this.bufferExecutando.getNome());
-                
-                
-                
-                if(this.bufferExecutando.getNome().equals("Programa A")){
-                    this.labels.get(1).get(0).setText("---");
-                    this.labels.get(2).get(0).setText("Processo A");
-                } 
-                    
-                if(this.bufferExecutando.getNome().equals("Programa B")) {
-                    this.labels.get(1).get(1).setText("---");
-                    this.labels.get(2).get(1).setText("Processo B");
-                }
-                
-                if(this.bufferExecutando.getNome().equals("Programa C")){ 
-                    this.labels.get(1).get(2).setText("---");
-                    this.labels.get(2).get(2).setText("Processo C");
-                }
-                
-                if(this.bufferExecutando.getNome().equals("Programa D")) {
-                    this.labels.get(1).get(3).setText("---");
-                    this.labels.get(2).get(3).setText("Processo D");
-                }
-                
-                
                 barraDeProgresso(this.bufferExecutando, this.bufferExecutando.getCont() + quantum);
                 
+                this.bufferExecutando.getLabels().get(2).setText("---");
+                
+                this.bufferExecutando.getLabels().get(3).setText(this.bufferExecutando.getNome());
+                
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(this.bufferExecutando.getNome().equals("Programa A")){
-                    this.labels.get(3).get(0).setText("Processo A");
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    this.labels.get(3).get(0).setText("---");
-                }
                 
-                 
+                this.bufferExecutando.getLabels().get(3).setText("---");
+                this.bufferExecutando.getLabels().get(1).setText(this.bufferExecutando.getNome());
                 
                 
                 
@@ -591,28 +569,10 @@ public class Frame extends javax.swing.JFrame {
                     est.bufferProntos.remove(this.bufferExecutando);
                     est.bufferFinalizados.add(this.bufferExecutando);
 
+                    //FINALIZADOS
+                    this.bufferExecutando.getLabels().get(1).setText("---");
+                    this.bufferExecutando.getLabels().get(4).setText(this.bufferExecutando.getNome());
                     
-                    if(this.bufferExecutando.getNome().equals("Programa A")){ 
-                        this.labels.get(4).get(0).setText("Processo A");
-                        this.labels.get(1).get(0).setText("---");
-                    }
-                    
-                    if(this.bufferExecutando.getNome().equals("Programa B")){ 
-                        this.labels.get(4).get(1).setText("Processo B");
-                        this.labels.get(1).get(1).setText("---");
-                    }
-                    
-                    if(this.bufferExecutando.getNome().equals("Programa C")){
-                        this.labels.get(4).get(2).setText("Processo C");
-                        this.labels.get(1).get(2).setText("---");
-                    }
-                    
-                    if(this.bufferExecutando.getNome().equals("Programa D")){ 
-                        this.labels.get(4).get(3).setText("Processo D");
-                        this.labels.get(1).get(3).setText("---");
-                    }
-
-                    System.out.println(this.bufferExecutando.getNome());
                     
                     inicio--;
                     N--;
@@ -621,11 +581,11 @@ public class Frame extends javax.swing.JFrame {
                 this.inicio++;
                 this.inicio = circular(this.inicio);
                 
-                if (this.inicio == 0) {
-                    System.out.println("");
-                }
+                
             }
         }).start();
+        
+        
 
 
     }//GEN-LAST:event_btEscalonarActionPerformed
@@ -641,7 +601,7 @@ public class Frame extends javax.swing.JFrame {
                 Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            System.out.println(p.getCont());
+          
             p.setCont(p.getCont()+1);
     }
 
@@ -687,10 +647,6 @@ public class Frame extends javax.swing.JFrame {
                 y.setText("---");                        
             });
         });
-        
-    }
-    
-    public void prontos(){
         
     }
     

@@ -18,9 +18,9 @@ public class Processo {
     private int tempo;
     private int cont;
     private JProgressBar bar;
-    private List<List<JLabel>> labels;
+    private List<JLabel> labels;
 
-    public Processo(String nome, int tempo, int cont, JProgressBar bar, List<List<JLabel>> labels) {
+    public Processo(String nome, int tempo, int cont, JProgressBar bar, List<JLabel> labels) {
         this.nome = nome;
         this.tempo = tempo;
         this.cont = cont;
@@ -30,7 +30,7 @@ public class Processo {
         this.bar.setMaximum(tempo);
     }
 
-    public List<List<JLabel>> getLabels() {
+    public List<JLabel> getLabels() {
         return labels;
     }
 
