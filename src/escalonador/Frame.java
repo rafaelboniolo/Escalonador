@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package escalonador;
 
 import java.util.ArrayList;
@@ -13,15 +8,10 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
-/**
- *
- * @author NataN-PC
- */
+
 public class Frame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Frame
-     */
+    
     
     private static int N = 4;
     private Estados est;
